@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "330977255630",
+    "project_id": "auctioneer-5df5f",
+    "storage_bucket": "auctioneer-5df5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330977255630:android:2942d59d510a87e6ad309f",
+        "android_client_info": {
+          "package_name": "com.JohnDoe.Auctioneer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330977255630-fkst3mtibgb6fsqieau4d3e00ukoirpv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUdiGLn1bZGrDm-xpyfLiiK7fHLoBdKHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330977255630-fkst3mtibgb6fsqieau4d3e00ukoirpv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "330977255630-mhapg8jpvd4p0er6m4ht1cjjcieuf28k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.JohnDoe.Auctioneer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
