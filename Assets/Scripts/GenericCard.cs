@@ -1,10 +1,11 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GenericCard : MonoBehaviour {
-	Image cardImage;
+	SpriteRenderer cardImage;
 	public Sprite[] face_images;
 	public Sprite[] tail_images;
 
@@ -46,7 +47,7 @@ public class GenericCard : MonoBehaviour {
 	
 	private void Awake(){
 		rectTransform = GetComponent<RectTransform>();
-		cardImage = GetComponent<Image>();
+		cardImage = GetComponent<SpriteRenderer>();
 	}
 	private void Start(){
 		if (isFace){
@@ -58,9 +59,13 @@ public class GenericCard : MonoBehaviour {
 	public void StartTurn(){
 		StartCoroutine(ToggleImage());
 	}
-	private void setCardImage(int face, int tail){
-		cardImage.sprite = face_images[face < face_images.Length-1 ? face : 0];
-		cardImage.sprite = tail_images[tail < tail_images.Length-1 ? tail : 0];
+	private void setCardImage(int id, bool isTail){
+		if(isTail){
+			cardImage.sprite = face_images[id < face_images.Length-1 ? id : 0];
+		}
+		else {
+			cardImage.sprite = tail_images[id < tail_images.Length-1 ? id : 0];
+		}
 
 
 	}
