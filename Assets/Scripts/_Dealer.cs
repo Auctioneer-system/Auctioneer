@@ -2,33 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _Dealer : MonoBehavior{
-	GenericCard card;
+public class _Dealer : MonoBehaviour{
+	GenericCard TemplateCard;
 	int cardIndex = 0;
-	//cardIndexの値を宣言
 
 	public GameObject card;  
-	//外部から参照する予定のcardというオブジェクトの宣言（後にドラッグアンドドロップ）。
 
 	private void Awake(){
-		cardModel = card.GetComponent<CardModel>();
-		//cardにアタッチされているCardModelを取得して使用します。
+		TemplateCard = card.GetComponent<GenericCard>();
 	}
 
 	private void OnGUI(){
 		if(GUI.Button(new Rect(10,10,100,28),"Hit me!")){
-		//Hit me!!と書いてあるボタンを作って押されたら下記を実行
         
-			if(cardIndex >= cardModel.faces.Length){
-		//もしfaces配列の長さよりもcardIndexの値が大きくなったら下記を実行
+			if(cardIndex >= TemplateCard.face_images.Length){
 				cardIndex = 0;
-				cardModel.ToggleFace(false);//裏面をレンダー
+				TemplateCard.ToggleImage();
 			} else {
-				cardModel.cardIndex = cardIndex;//cardIndexの値を代入（最初は０）
-				cardModel.ToggleFace(true);//表面をレンダー
+				TemplateCard.cardIndex = cardIndex;
+				TemplateCard.ToggleImage();
 			}
 
-			cardIndex++;//cardIndexの値をインクリメント
+			cardIndex++;
 		}
 	}
 }
