@@ -1,73 +1,72 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GenericCard : MonoBehaviour {
-	SpriteRenderer cardImage;
 	public Sprite[] face_images;
 	public Sprite[] tail_images;
-
 	public int cardIndex;
 	public int tailIndex;
-	static float velocity = 8f;
-	// 時間に余裕があればVelocity関数の定義が欲しい
 
 	RectTransform rectTransform;
-	public bool isFace;
+	static bool isFace=true;
+	GenericCard model;
+	SpriteRenderer spriteRenderer;
 
-	public IEnumerator ToggleImage(){
+	public AnimationCurve scaleCurve;
+	public float duration = 0.5f;
+
+	private IEnumerator ToggleImage(){
+
+		spriteRenderer.sprite = !isFace ? face_images[cardIndex] : tail_images[tailIndex];
+		
 		float tick = 0f;
-		Vector3 startScale = new Vector3(1f, 1f, 1f);
-		Vector3 endScale = new Vector3(1f, 0f, 1f);
-		Vector3 localScale = new Vector3();
-		while (tick < velocity/2){
-			tick += Time.deltaTime * velocity;
-			localScale = Vector3.Lerp(startScale, endScale, tick);
-			rectTransform.localScale = localScale;
-			yield return null;
+		float scale;	
+		float default_scale = transform.localScale.x;
+		Vector3 local_scale;
+		while (tick < 1.0f){
+			scale = scaleCurve.Evaluate(tick);
+			tick += Time.deltaTime / duration;
+				
+			local_scale = transform.localScale;
+			local_scale.x = scale * default_scale;
+			transform.localScale = local_scale;
+
+			if(tick >= 0.5f){
+				spriteRenderer.sprite = isFace ? face_images[cardIndex] : tail_images[tailIndex];
+			}
+
+			yield return new WaitForFixedUpdate(); 
 		}
 	
 		if(isFace){
-			cardImage.sprite = face_images[cardIndex];
+			spriteRenderer.sprite = face_images[cardIndex];
 		}
 		else{
-			cardImage.sprite = tail_images[tailIndex];
+			spriteRenderer.sprite = tail_images[tailIndex];
 			
 		}
 		isFace = !isFace;
-		while (tick < velocity){
-			tick += Time.deltaTime * velocity;
-			localScale = Vector3.Lerp(startScale, endScale, tick);
-			rectTransform.localScale = localScale;
-			yield return null;
-		}
 	}
 	
 	private void Awake(){
-		rectTransform = GetComponent<RectTransform>();
-		cardImage = GetComponent<SpriteRenderer>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		model = GetComponent<GenericCard>();
 	}
 	private void Start(){
 		if (isFace){
-			cardImage.sprite = face_images[cardIndex];
+			spriteRenderer.sprite = face_images[cardIndex < face_images.Length-1 ? cardIndex : 0];
+
 		}else{
-			cardImage.sprite = tail_images[tailIndex];
+			spriteRenderer.sprite = tail_images[cardIndex < tail_images.Length-1 ? cardIndex : 0];
+
 		}
 	}
 	public void StartTurn(){
+		StopCoroutine(ToggleImage());
+		Debug.Log("Start Turn");
 		StartCoroutine(ToggleImage());
-	}
-	private void setCardImage(int id, bool isTail){
-		if(isTail){
-			cardImage.sprite = face_images[id < face_images.Length-1 ? id : 0];
-		}
-		else {
-			cardImage.sprite = tail_images[id < tail_images.Length-1 ? id : 0];
-		}
-
-
 	}
 	
 }
