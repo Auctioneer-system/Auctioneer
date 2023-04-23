@@ -90,6 +90,7 @@ private IEnumerator ToggleImage()
 			// 場にカードを提出した時の処理
             isHanded = true;
             isDraggable = false;
+            
 		}
 	}
     private bool isHanded;
@@ -97,5 +98,10 @@ private IEnumerator ToggleImage()
         if(isHanded){
             // カードが提出済みの時の処理
         }
+        /*
+            なんとなくの予想：
+            ・Firebaseから提出が来るまで待つ
+            ・全員の分が集まったら判定を下す．
+        */
     }
 }

@@ -87,9 +87,8 @@ private IEnumerator ToggleImage()
 
 	void OnMouseUp(){
 		if(CollidingField != null){
-			// 場にカードを提出した時の処理
+			//処理
             isHanded = true;
-            isDraggable = false;
 		}
 	}
     private bool isHanded;

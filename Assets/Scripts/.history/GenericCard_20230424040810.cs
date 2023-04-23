@@ -31,7 +31,7 @@ private IEnumerator ToggleImage()
         scale = scaleCurve.Evaluate(tick);
         tick += Time.deltaTime / duration;
 
-        local_scale = transform.localScale;
+        local_scale = default_local_scale;
         local_scale.x = scale * default_scale;
         transform.localScale = local_scale;
 
@@ -73,29 +73,19 @@ private IEnumerator ToggleImage()
         this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
         this.offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
     }
-    public bool isDraggable;
+
     void OnMouseDrag() {
-        if(!isDraggable) return ;
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
         transform.position = currentPosition;
     }
 	private Collider2D CollidingField;
 	void OnTriggerStay2D(Collider2D coll){
-        CollidingField = coll.gameObject.tag == "field"  ? coll : null;
+        CollidingField = (coll.gameObject.tag == "field" ) : coll ? null;
 　　}
-
 	void OnMouseUp(){
 		if(CollidingField != null){
-			// 場にカードを提出した時の処理
-            isHanded = true;
-            isDraggable = false;
+			//処理
 		}
 	}
-    private bool isHanded;
-    void Update(){
-        if(isHanded){
-            // カードが提出済みの時の処理
-        }
-    }
 }

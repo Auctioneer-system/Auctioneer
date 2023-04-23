@@ -73,9 +73,9 @@ private IEnumerator ToggleImage()
         this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
         this.offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
     }
-    public bool isDraggable;
+    public isDraggable;
     void OnMouseDrag() {
-        if(!isDraggable) return ;
+        if(isDraggable) return;
         Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 currentPosition = Camera.main.ScreenToWorldPoint(currentScreenPoint) + this.offset;
         transform.position = currentPosition;
@@ -87,15 +87,7 @@ private IEnumerator ToggleImage()
 
 	void OnMouseUp(){
 		if(CollidingField != null){
-			// 場にカードを提出した時の処理
-            isHanded = true;
-            isDraggable = false;
+			//処理
 		}
 	}
-    private bool isHanded;
-    void Update(){
-        if(isHanded){
-            // カードが提出済みの時の処理
-        }
-    }
 }

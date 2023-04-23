@@ -90,6 +90,7 @@ private IEnumerator ToggleImage()
 			// 場にカードを提出した時の処理
             isHanded = true;
             isDraggable = false;
+            
 		}
 	}
     private bool isHanded;
