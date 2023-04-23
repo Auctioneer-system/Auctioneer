@@ -98,31 +98,25 @@ private IEnumerator ToggleImage()
             // カードが提出済みの時の処理
         }
     }
-    public AnimationCurve moveCurve;
-    public float moveDuration = 1.0f;
-
-    public void DiscardToSide(float direction)
-    {
-        StartCoroutine(MoveAndHide(direction));
-    }
-
-    private IEnumerator MoveAndHide(float direction)
+    public AnimationCurve moveCurve; // 追加: 移動に使用するAnimationCurve
+    public float moveSpeed = 5.0f; // 追加: 移動の速度
+        private IEnumerator DiscardToSide(float direction)
     {
         float tick = 0f;
         Vector3 startPos = transform.position;
-        Vector3 endPos = transform.position + Quaternion.Euler(0f, 0f, direction) * Vector3.right * Screen.width;
-
+        Vector3 endPos = transform.position + Quaternion.Euler(0f, 0f, direction) * Vector3.right * 1000f; // 画面外に追い出す位置
         while (tick < 1.0f)
         {
-            float t = moveCurve.Evaluate(tick);
-            tick += Time.deltaTime / moveDuration;
+            float moveProgress = moveCurve.Evaluate(tick); // 移動の進行度合いを計算
+            tick += Time.deltaTime / duration;
 
-            transform.position = Vector3.Lerp(startPos, endPos, t);
+            // AnimationCurveを使用してカードを移動
+            transform.position = Vector3.Lerp(startPos, endPos, moveProgress * moveSpeed * Time.deltaTime);
 
             yield return null;
         }
 
-        // this.gameObject.SetActive(false);
-        Debug.Log("Discarded");
+        // 非表示にする
+        gameObject.SetActive(false);
     }
 }

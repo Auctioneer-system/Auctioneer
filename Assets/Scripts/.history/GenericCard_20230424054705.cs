@@ -110,7 +110,7 @@ private IEnumerator ToggleImage()
     {
         float tick = 0f;
         Vector3 startPos = transform.position;
-        Vector3 endPos = transform.position + Quaternion.Euler(0f, 0f, direction) * Vector3.right * Screen.width;
+        Vector3 endPos = transform.position + Quaternion.Euler(0f, 0f, direction) * Screen.width;
 
         while (tick < 1.0f)
         {

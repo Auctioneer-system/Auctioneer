@@ -122,7 +122,7 @@ private IEnumerator ToggleImage()
             yield return null;
         }
 
-        // this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         Debug.Log("Discarded");
     }
 }

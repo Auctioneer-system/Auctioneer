@@ -21,7 +21,7 @@ public class DebugChangeCard : MonoBehaviour {
         if(GUI.Button(new Rect(100,100,1000,280), "Hit me!"))　　
          {
                  generic_card.DiscardToSide(125);　
-                Debug.Log("Callled!");
+                Debug.Log("Callled!")
          }
 
     }

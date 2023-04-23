@@ -88,7 +88,7 @@ public class HandingField : MonoBehaviour, IPointerDownHandler
         {
             if (genericCard.cardIndex != maxCardNumber)
             {
-                genericCard.StartTurn();
+                genericCard.ToggleImage();
             }
         }
 
