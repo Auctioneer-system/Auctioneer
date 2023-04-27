@@ -45,9 +45,9 @@ public class Ojisan : MonoBehaviour
 	public void setOjisan(int hat, int glasses, int beard, int clothes, int mouth, int body){
 		Hat.index = hat;
 		Glasses.index = glasses;
-		Beard.index = beard;
-		Clothes.index = clothes;
-		Mouth.index = mouth;
+		Body.index = beard;
+		Body.index = clothes;
+		Body.index = mouth;
 		Body.index = body;
 		
 	}

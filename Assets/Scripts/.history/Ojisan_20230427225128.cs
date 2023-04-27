@@ -46,8 +46,8 @@ public class Ojisan : MonoBehaviour
 		Hat.index = hat;
 		Glasses.index = glasses;
 		Beard.index = beard;
-		Clothes.index = clothes;
-		Mouth.index = mouth;
+		Body.index = clothes;
+		Body.index = mouth;
 		Body.index = body;
 		
 	}

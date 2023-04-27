@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 69983e40a30324b0b88fe503d6eb28f5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayingMenu.unity
     guid: 4377dc444d3687346b89d0f928ce54e5
+  - enabled: 1
+    path: Assets/Scenes/Ojisantest.unity
+    guid: 66d2592d8513a704e8b47831b109c37c
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e6c6f788c1641454682e49788094dbb2, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: f7abb86c519ea93498965253e253c4da, type: 2}

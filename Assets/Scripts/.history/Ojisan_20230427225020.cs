@@ -43,12 +43,6 @@ public class Ojisan : MonoBehaviour
 		tar.renderer.sprite = tar.sprite[tar.index];
 	}
 	public void setOjisan(int hat, int glasses, int beard, int clothes, int mouth, int body){
-		Hat.index = hat;
-		Glasses.index = glasses;
-		Beard.index = beard;
-		Clothes.index = clothes;
-		Mouth.index = mouth;
-		Body.index = body;
 		
 	}
 	public void ReloadAllSpriteStructure(){
