@@ -179,9 +179,6 @@ public class HandingField : MonoBehaviour
 		else
 		{
 			// ゲーム全体の終了処理
-			foreach(var keyvalpair in HandedScores){
-			PlayerPrefs.SetInt(keyvalpair.Key, keyvalpair.Value);
-			}
 		}
 	}
 	private IEnumerator DelayCoroutine(float seconds, Action action)

@@ -66,7 +66,6 @@ public class HandingField : MonoBehaviour
 			{
 				EndTurn();
 				isEnded = -1;
-				StartTurn();
 
 			}
 			if (turnlimit-- == 0)
@@ -75,7 +74,6 @@ public class HandingField : MonoBehaviour
 				{
 					EndTurn();
 					isEnded = -1;
-					StartTurn();
 				}
 				catch (KeyNotFoundException e)
 				{
@@ -179,9 +177,6 @@ public class HandingField : MonoBehaviour
 		else
 		{
 			// ゲーム全体の終了処理
-			foreach(var keyvalpair in HandedScores){
-			PlayerPrefs.SetInt(keyvalpair.Key, keyvalpair.Value);
-			}
 		}
 	}
 	private IEnumerator DelayCoroutine(float seconds, Action action)

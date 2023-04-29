@@ -144,6 +144,10 @@ public class HandingField : MonoBehaviour
 	}
 	public void EndTurn()
 	{
+		if(Yamahuda.Count == 0){
+
+			
+		}
 		// ターン終了時に勝者を判定する
 		int maxScore = -1;
 		string winner = "";
@@ -179,9 +183,6 @@ public class HandingField : MonoBehaviour
 		else
 		{
 			// ゲーム全体の終了処理
-			foreach(var keyvalpair in HandedScores){
-			PlayerPrefs.SetInt(keyvalpair.Key, keyvalpair.Value);
-			}
 		}
 	}
 	private IEnumerator DelayCoroutine(float seconds, Action action)
