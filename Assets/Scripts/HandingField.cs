@@ -62,11 +62,11 @@ public class HandingField : MonoBehaviour
 	{
 		if (isEnded == 1)
 		{
-			if (HandedScores.Count == countplayer)
-			{
-				EndTurn();
-				isEnded = -1;
-				StartTurn();
+		// 	if (HandedScores.Count == countplayer)
+		// 	{
+		// 		EndTurn();
+		// 		isEnded = -1;
+		// 		StartTurn();
 
 			}
 			if (turnlimit-- == 0)
